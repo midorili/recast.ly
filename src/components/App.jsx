@@ -2,6 +2,8 @@ import exampleVideoData from '/src/data/exampleVideoData.js';
 import VideoList from './VideoList.js';
 import VideoListEntry from './VideoListEntry.js';
 import VideoPlayer from './VideoPlayer.js';
+import searchYouTube from '/src/lib/searchYouTube.js';
+import Search from './Search.js';
 
 const { useState, useEffect } = React;
 
@@ -14,12 +16,16 @@ var App = () => {
     setVideo(video);
   };
 
+  // const searchVideos = () => () => {
+  //   updateVideos()
+  // }
+
   return (
 
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <div><h5><em>search</em> view goes here</h5></div>
+          <div><h5><em>search</em> <Search searchFunction={searchYouTube}/></h5></div>
         </div>
       </nav>
       <div className="row">

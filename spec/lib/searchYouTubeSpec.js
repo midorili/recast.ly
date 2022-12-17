@@ -72,6 +72,7 @@ describe('searchYouTube', function() {
     xhr.restore();
 
     searchYouTube('react', (data) => {
+
       expect(hasSameShape(data, exampleVideoData)).to.be.true;
       done();
     });

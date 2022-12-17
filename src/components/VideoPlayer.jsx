@@ -1,5 +1,4 @@
 var VideoPlayer = (props) => {
-  console.log(props);
 
   return (
 
