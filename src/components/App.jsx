@@ -8,17 +8,44 @@ import Search from './Search.js';
 const { useState, useEffect } = React;
 
 var App = () => {
-  const [videos, updateVideos] = useState(exampleVideoData);
 
-  const [currentVideo, setVideo] = useState(exampleVideoData[0]);
+  var emptyData = [
+    {
+      "kind": "",
+      "etag": "",
+      "id": {
+        "kind": "",
+        "videoId": ""
+      },
+      "snippet": {
+        "publishedAt": "",
+        "channelId": "",
+        "title": "",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "",
+          },
+
+        }
+      }
+    }
+  ];
+
+  const [videos, updateVideos] = useState(emptyData);
+
+  const [currentVideo, setVideo] = useState(videos[0]);
 
   const clickVideo = (video) => () => {
     setVideo(video);
   };
 
-  // const searchVideos = () => () => {
-  //   updateVideos()
-  // }
+  useEffect(() => {
+    searchYouTube('funny dog', (data) => {
+      console.log('data: ', data);
+      updateVideos(data);
+    });
+  }, [videos]);
 
   return (
 
@@ -33,7 +60,7 @@ var App = () => {
           <div><h5><em>videoPlayer</em><VideoPlayer video={currentVideo} /></h5></div>
         </div>
         <div className="col-md-5">
-          <div><h5><em>videoList</em> <VideoList videos={exampleVideoData} clickVideo={clickVideo}/></h5></div>
+          <div><h5><em>videoList</em> <VideoList videos={videos} clickVideo={clickVideo}/></h5></div>
         </div>
       </div>
     </div>

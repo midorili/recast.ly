@@ -11,7 +11,9 @@ var searchYouTube = (query, callback) => {
     type: 'GET',
     data: {q: query},
     contentType: 'application/json',
-    success: callback,
+    success: console.log('success'),
+  }).then((data) => {
+    callback(data);
   });
 };
 
