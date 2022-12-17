@@ -13,10 +13,12 @@ describe ('Search', function() {
   describe('when rendering live data from YouTube', function() {
     beforeEach(function() {
       searchYouTubeStub = sinon.stub();
+
       searchYouTubeStub.onCall(0).yields(window.fakeVideoData);
       searchYouTubeStub.onCall(1).yields(window.moreFakeVideoData);
-
+      console.log(searchYouTubeStub);
       app = renderIntoDocument(
+
         <Wrapper>
           <App searchYouTube={searchYouTubeStub} />
         </Wrapper>

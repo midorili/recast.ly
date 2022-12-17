@@ -10,8 +10,7 @@ var searchYouTube = (query, callback) => {
     url: 'https://app-hrsei-api.herokuapp.com/api/recastly/videos',
     type: 'GET',
     data: {q: query},
-    contentType: 'application/json',
-    success: console.log('success'),
+    contentType: 'application/json'
   }).then((data) => {
     callback(data);
   });
